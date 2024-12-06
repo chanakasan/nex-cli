@@ -1,0 +1,3 @@
+#!/bin/bash
+
+source $HOME/dotfiles/core/nex-cli/main/nex.sh
