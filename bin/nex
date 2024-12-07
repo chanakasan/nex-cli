@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -e
+
+export nx_cli_root=$HOME/dotfiles/nex-cli
+source $nx_cli_root/src/main.sh

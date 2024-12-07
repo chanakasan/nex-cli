@@ -1,0 +1,64 @@
+# shortcuts=("pm2 restart py" "ghi" "klmno")
+shortcuts=("pm2 restart py"
+"ghi"
+"echo world hi"
+"new branch"
+"klmno")
+
+debug_on=1
+
+main() {
+    local parts=($(split_string "$@"))
+    local cmd_parts="${parts[0]}"
+    local cmd_args="${parts[1]}"
+    debug cmd_parts $cmd_parts
+    debug cmd_args $cmd_parts
+
+    local input_wc=$(echo "$cmd_parts" | wc -w)
+    local found=""
+    for shortcut in "${shortcuts[@]}"; do
+        match=1
+        shortcut_wc=$(echo "$shortcut" | wc -w)
+        for arg in "$cmd_parts"; do
+            # check if shortcut contains each func arg
+            # if any arg is not missing
+            # set match to false
+            if [[ ! " $shortcut " == *" $arg "* ]]; then
+              # echo $shortcut: has no "$arg"
+              match=0
+              break
+            fi
+        done
+        if [[ "$match" -eq 1 ]] && [[ "$shortcut_wc" == "$input_wc" ]]; then
+          # echo found $match
+          found=$shortcut
+          break
+        fi
+    done
+    echo $found
+    echo args: $cmd_args
+}
+
+debug() {
+  if [ -n $debug_one ]; then
+    echo "<$@>"
+  fi
+}
+
+split_string() {
+  local old_ifs=$IFS
+  IFS=':'  # Set the delimiter to ":"
+  local string="$1"  # Input string to be split
+  local item
+
+  # Loop through each item in the string
+  for item in $string; do
+    # Trim leading and trailing whitespace from each item
+    item="${item#"${item%%[![:space:]]*}"}"   # remove leading whitespace
+    item="${item%"${item##*[![:space:]]}"}"   # remove trailing whitespace
+    echo "<$item>"
+  done
+  IFS=$old_ifs
+}
+
+main $@
