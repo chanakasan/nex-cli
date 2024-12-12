@@ -1,5 +1,5 @@
 main() {
-  local base_dir=$(nex _plugin)--test
+  local base_dir=$nx_cli_root/plugin
   mkdir -p $base_dir
 
   if [[ -z $1 ]]; then

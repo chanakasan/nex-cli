@@ -6,8 +6,9 @@ main() {
     echo
     exit 1
   fi
+  local base=$nx_cli_root/plugin
   local plugin_name=$1.plugin
-  local plugin_path=$(nex _plugin "$1")
+  local plugin_path=$base/$plugin_name
   local file=$plugin_path/setup/install.sh
   if [ -f $file ]; then
     echo " Running setup $file"
