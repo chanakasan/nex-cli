@@ -1,7 +1,7 @@
 # export nx_cli_root="$(dirname "${BASH_SOURCE[0]}")"
 
 export nx_root=$HOME/dotfiles
-export nx_cli_root=$nx_root/core/nex-cli
+export nx_cli_root=$nx_root/nex-cli
 export PATH=$nx_cli_root/bin:$PATH
 
 nx_source_folder() {
