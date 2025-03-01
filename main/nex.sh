@@ -1,7 +1,7 @@
 set -e
 
-source $nx_cli_root/layer/concerns/try-function.sh
-source $nx_cli_root/layer/concerns/try-subcommand.sh
+source $nx_cli_root/layers/concerns/try-function.sh
+source $nx_cli_root/layers/concerns/try-subcommand.sh
 source $nx_cli_root/main/get-paths.sh
 source $nx_cli_root/main/functions.sh
 source $nx_cli_root/main/lib.sh

@@ -13,6 +13,6 @@ nx_source_folder() {
   done
 }
 
-nx_source_folder $nx_cli_root/layer/init
+nx_source_folder $nx_cli_root/layers/init
 
 echo Nex CLI Loaded
